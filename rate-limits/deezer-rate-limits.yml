@@ -5,31 +5,36 @@ provider: Deezer
 providerId: deezer
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Music
 - Streaming
-- API
-- France
+- Audio
+- OAuth
 - Catalog
+- Playlists
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Deezer. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Deezer publishes a global limit of 50 requests per 5 seconds per IP/app on the public REST API.
+  Exceeding the limit returns HTTP 4xx with an error code. There is no documented daily quota.
+notes: 50 requests / 5 seconds is the documented baseline.
 sources:
-- https://www.deezer.com/
+- https://developers.deezer.com/api
 responseCodes:
   throttled: 429
 limits:
 - name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  scope: ip-or-app
+  metric: requests
+  limit: 50 per 5 seconds
+  notes: Documented rate-limit baseline.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Sleep at least 100ms between bursts; on rate-limit errors apply exponential backoff with jitter.
+- name: Caching
+  description: Cache catalog responses; track/album metadata is stable and rarely needs re-fetching.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

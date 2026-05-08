@@ -5,37 +5,60 @@ provider: Deezer
 providerId: deezer
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Music
 - Streaming
-- API
-- France
+- Audio
+- OAuth
 - Catalog
+- Playlists
 - Plans
-description: Placeholder plans/pricing artifact for Deezer. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+description: >-
+  Deezer's public API is free for registered apps. There is no per-call fee. Consumer subscriptions
+  (Deezer Free, Premium, Family, HiFi, Student) apply to listeners and govern playback rights but are
+  independent of API access. Full-track streaming via the API requires the user to be a paid
+  subscriber.
+notes: API is free; full-track streaming requires user subscription.
 sources:
-- https://www.deezer.com/
+- https://developers.deezer.com/
+- https://www.deezer.com/offers
 plans:
-- id: deezer-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: deezer-developer
+  name: Deezer API (Developer)
+  type: free
+  description: Free public REST API. Public catalog endpoints are unauthenticated; user-library and playback need OAuth.
   entries:
   - label: API Access
     name: api_access
     type: flat
-    metric: varies
+    metric: requests
     limit: -1
     timeFrame: usage
     geo: global
     unit: 1
-    price: see https://www.deezer.com/
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Public catalog (unauthenticated)
+  - name: OAuth 2.0 for user scope
+- id: deezer-consumer
+  name: Deezer Consumer Subscriptions
+  type: subscription
+  description: Deezer's consumer plans (Free, Premium, Family, HiFi, Student); required on the user side for full playback through API.
+  entries:
+  - label: Subscription
+    name: consumer_sub
+    type: flat
+    metric: month
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: see https://www.deezer.com/offers
+    userMultiplied: false
+  elements:
+  - name: Free, Premium, Family, HiFi, Student tiers
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

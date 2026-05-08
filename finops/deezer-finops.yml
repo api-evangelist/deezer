@@ -5,21 +5,25 @@ provider: Deezer
 providerId: deezer
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Music
 - Streaming
-- API
-- France
+- Audio
+- OAuth
 - Catalog
+- Playlists
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Deezer. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Deezer. API access is free and not invoiced. Cost concentration is
+  on the consumer subscription side (Premium, Family, HiFi, Student), which is billed directly by
+  Deezer to end users.
+notes: API is free; consumer subscriptions billed to end users by Deezer.
 sources:
-- https://www.deezer.com/
-- https://focus.finops.org/focus-specification/v1-3/
+- https://developers.deezer.com/
+- https://www.deezer.com/offers
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -27,40 +31,45 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Deezer
-serviceCategory: Music
+serviceCategory: Music Streaming
 billingModel:
-  pricingCategory: To Be Reconciled
-  billingFrequency: Monthly
-  billingCurrency: USD
+  pricingCategory: Free / Subscription
+  billingFrequency: Monthly (consumer)
+  billingCurrency: EUR/USD
   chargeCategories:
-  - Usage
-  - Purchase
-  - Adjustment
+  - Subscription
 focusColumns:
-  ServiceName: Deezer
-  ServiceCategory: Music
+  ServiceName: Deezer API
+  ServiceCategory: Music Streaming
   ProviderName: Deezer
   PublisherName: Deezer
   InvoiceIssuerName: Deezer
-  BillingCurrency: USD
-  ChargeCategory: Usage
+  BillingCurrency: EUR
+  ChargeCategory: Subscription
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: api_requests
+  description: API request count (free; observability only).
+  unit: request
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - app
+  - endpoint
+- name: consumer_subscription
+  description: Deezer consumer subscription billing.
+  unit: month
+  aggregation: count
+  dimensions:
+  - tier
+  - country
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: No API invoice; track usage internally for performance and quota planning.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Allocate any consumer subscriptions to the team or program owning them.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Cache catalog responses to stay under the 50 req / 5s ceiling.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: App owner manages the Deezer developer registration and OAuth client.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

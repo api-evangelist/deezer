@@ -3,21 +3,48 @@ url: https://raw.githubusercontent.com/api-evangelist/deezer/refs/heads/main/api
 name: Deezer
 x-type: company
 description: >-
-  Deezer is a French music streaming service with REST APIs for catalog access, user library, playlists, and partnerships.
+  Deezer is a global music streaming service. The Deezer API is a public REST API for tracks, albums,
+  artists, playlists, charts, search, and authenticated user library. It uses OAuth 2.0 for user-
+  scoped operations and is free to use within published rate limits.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Music
   - Streaming
-  - API
-  - France
+  - Audio
+  - OAuth
   - Catalog
+  - Playlists
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: deezer:platform
+    name: Deezer API
+    description: >-
+      Public REST API covering /track, /album, /artist, /playlist, /chart, /search, /genre, /radio, /user,
+      and /editorial. Public endpoints (catalog, search) are unauthenticated and return JSON; user-scoped
+      operations require OAuth 2.0.
+    humanURL: https://developers.deezer.com/api
+    baseURL: https://api.deezer.com
+    tags:
+      - Catalog
+      - Tracks
+      - Albums
+      - Artists
+      - Search
+      - Playlists
+    properties:
+      - type: Documentation
+        url: https://developers.deezer.com/api
+      - type: Authentication
+        url: https://developers.deezer.com/api/oauth
+      - type: SDK
+        url: https://developers.deezer.com/sdk
 common:
   - type: Website
     url: https://www.deezer.com/
+  - type: DeveloperPortal
+    url: https://developers.deezer.com/
   - type: Plans
     url: plans/deezer-plans-pricing.yml
   - type: RateLimits

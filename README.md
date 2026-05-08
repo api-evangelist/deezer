@@ -1,6 +1,6 @@
 # Deezer (deezer)
 
-Deezer is a French music streaming service with REST APIs for catalog access, user library, playlists, and partnerships.
+Deezer is a global music streaming service. The Deezer API is a public REST API for tracks, albums, artists, playlists, charts, search, and authenticated user library. It uses OAuth 2.0 for user-scoped operations and is free to use within published rate limits.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/deezer/refs/heads/main/apis.yml)
 
@@ -8,17 +8,25 @@ Deezer is a French music streaming service with REST APIs for catalog access, us
 - **x-type:** company
 
 ## Tags
- - Music, Streaming, API, France, Catalog
+- Music, Streaming, Audio, OAuth, Catalog, Playlists
 
 ## Timestamps
 - **Created:** 2026-05-08
 - **Modified:** 2026-05-08
 
+## APIs
+
+### Deezer API
+Public REST API covering /track, /album, /artist, /playlist, /chart, /search, /genre, /radio, /user, and /editorial. Public endpoints (catalog, search) are unauthenticated and return JSON; user-scoped operations require OAuth 2.0.
+- **Base URL:** `https://api.deezer.com`
+- **Docs:** https://developers.deezer.com/api
+
 ## Common Properties
 - [Website](https://www.deezer.com/)
-- [Plans](plans/deezer-plans-pricing.yml) — placeholder, pipeline reconciles later
-- [RateLimits](rate-limits/deezer-rate-limits.yml) — placeholder
-- [FinOps](finops/deezer-finops.yml) — FOCUS-aligned placeholder
+- [Developer Portal](https://developers.deezer.com/)
+- [Plans](plans/deezer-plans-pricing.yml) — reconciled (free API; consumer subscriptions separate)
+- [RateLimits](rate-limits/deezer-rate-limits.yml) — reconciled (50 req / 5 sec)
+- [FinOps](finops/deezer-finops.yml) — reconciled (FOCUS-aligned)
 
 ## Maintainers
 **FN:** Kin Lane
