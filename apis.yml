@@ -1,0 +1,29 @@
+aid: deezer
+url: https://raw.githubusercontent.com/api-evangelist/deezer/refs/heads/main/apis.yml
+name: Deezer
+x-type: company
+description: >-
+  Deezer is a French music streaming service with REST APIs for catalog access, user library, playlists, and partnerships.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Music
+  - Streaming
+  - API
+  - France
+  - Catalog
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.deezer.com/
+  - type: Plans
+    url: plans/deezer-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/deezer-rate-limits.yml
+  - type: FinOps
+    url: finops/deezer-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
