@@ -1,7 +1,7 @@
 aid: deezer
 url: https://raw.githubusercontent.com/api-evangelist/deezer/refs/heads/main/apis.yml
 name: Deezer
-x-type: company
+kind: company
 description: >-
   Deezer is a global music streaming service. The Deezer API is a public REST API for tracks, albums,
   artists, playlists, charts, search, and authenticated user library. It uses OAuth 2.0 for user-
