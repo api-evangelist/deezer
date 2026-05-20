@@ -41,6 +41,10 @@ apis:
       - type: SDK
         url: https://developers.deezer.com/sdk
 common:
+  - type: GitHubOrganization
+    url: https://github.com/deezer
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/deezer
   - type: Website
     url: https://www.deezer.com/
   - type: DeveloperPortal
