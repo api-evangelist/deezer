@@ -739,6 +739,69 @@ type UnsubscribePodcastResult {
   error: String
 }
 
+"""Audio quality tier offered by Deezer."""
+enum AudioQuality {
+  MP3_128
+  MP3_320
+  FLAC
+}
+
+"""A Deezer lyrics object (line-by-line)."""
+type LyricLine {
+  """Timestamp offset in milliseconds."""
+  offset: Int!
+  """Lyric text for this line."""
+  line: String!
+  """Romanized transliteration (if available)."""
+  lineTranslated: String
+}
+
+"""Full lyrics for a track."""
+type Lyrics {
+  """Track this belongs to."""
+  trackId: ID!
+  """Whether synchronized (line-by-line) lyrics are available."""
+  syncedAvailable: Boolean!
+  """Synchronized lyric lines."""
+  syncedLines: [LyricLine!]
+  """Plain-text lyrics (unsynchronized)."""
+  text: String
+  """Copyright notice."""
+  copyright: String
+  """Lyrics writer credits."""
+  writers: String
+}
+
+"""A contributor role on a track or album."""
+type ContributorRole {
+  """The contributing artist."""
+  artist: Artist!
+  """Role label (e.g., "Featured Artist", "Composer", "Producer")."""
+  role: String!
+}
+
+"""Metadata about the Deezer API itself."""
+type ApiInfo {
+  """Current API version string."""
+  version: String!
+  """List of supported locales."""
+  supportedLocales: [String!]!
+}
+
+"""A user's listening history entry."""
+type HistoryEntry {
+  """The track that was played."""
+  track: Track!
+  """When it was played."""
+  playedAt: DateTime!
+}
+
+"""Paginated history entries."""
+type HistoryConnection {
+  items: [HistoryEntry!]!
+  pageInfo: PageInfo!
+}
+
 # ─── Root types ──────────────────────────────────────────────────────────────
 
 type Query {
