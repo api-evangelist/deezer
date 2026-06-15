@@ -1,0 +1,879 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Infos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get country, hosting, and pop-the-flow info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/infos"
+          },
+          "docs": "Get country, hosting, and pop-the-flow info"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Track",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a track by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/track/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a track by id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Album",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an album by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/album/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an album by id"
+        },
+        {
+          "info": {
+            "name": "List tracks on an album",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/album/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tracks on an album"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Artist",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an artist by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an artist by id"
+        },
+        {
+          "info": {
+            "name": "Get top tracks for an artist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id/top",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get top tracks for an artist"
+        },
+        {
+          "info": {
+            "name": "List albums by an artist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id/albums",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List albums by an artist"
+        },
+        {
+          "info": {
+            "name": "List related artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id/related",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List related artists"
+        },
+        {
+          "info": {
+            "name": "Get a radio for the artist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id/radio",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a radio for the artist"
+        },
+        {
+          "info": {
+            "name": "List playlists featuring the artist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/artist/:id/playlists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List playlists featuring the artist"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Playlist",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a playlist by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/playlist/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a playlist by id"
+        },
+        {
+          "info": {
+            "name": "List tracks in a playlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tracks in a playlist"
+        },
+        {
+          "info": {
+            "name": "Add tracks to a playlist (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "songs",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add tracks to a playlist (OAuth required)"
+        },
+        {
+          "info": {
+            "name": "Remove tracks from a playlist (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "songs",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove tracks from a playlist (OAuth required)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global chart (tracks, albums, artists, playlists, podcasts)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart"
+          },
+          "docs": "Get global chart (tracks, albums, artists, playlists, podcasts)"
+        },
+        {
+          "info": {
+            "name": "Get chart for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get chart for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top tracks for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/tracks",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top tracks for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top albums for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/albums",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top albums for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top artists for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/artists",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top artists for a genre"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search across the Deezer catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search across the Deezer catalog"
+        },
+        {
+          "info": {
+            "name": "Search albums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/search/album",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search albums"
+        },
+        {
+          "info": {
+            "name": "Search artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/search/artist",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search artists"
+        },
+        {
+          "info": {
+            "name": "Search playlists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/search/playlist",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search playlists"
+        },
+        {
+          "info": {
+            "name": "Search tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/search/track",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search tracks"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Genre",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre"
+          },
+          "docs": "List genres"
+        },
+        {
+          "info": {
+            "name": "Get a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a genre"
+        },
+        {
+          "info": {
+            "name": "List artists in a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre/:id/artists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List artists in a genre"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Radio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List radios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio"
+          },
+          "docs": "List radios"
+        },
+        {
+          "info": {
+            "name": "Get a radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a radio"
+        },
+        {
+          "info": {
+            "name": "Get tracks for a radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get tracks for a radio"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Editorial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List editorial sections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial"
+          },
+          "docs": "List editorial sections"
+        },
+        {
+          "info": {
+            "name": "Get an editorial section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an editorial section"
+        },
+        {
+          "info": {
+            "name": "List releases for an editorial section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial/:id/releases",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List releases for an editorial section"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/me",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the authenticated user"
+        },
+        {
+          "info": {
+            "name": "Get a user by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a user by id"
+        },
+        {
+          "info": {
+            "name": "List a user's playlists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/playlists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's playlists"
+        },
+        {
+          "info": {
+            "name": "Create a playlist for the user (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.deezer.com/user/:id/playlists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a playlist for the user (OAuth required)"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite tracks"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite albums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/albums",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite albums"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/artists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite artists"
+        },
+        {
+          "info": {
+            "name": "Get a user's listening history (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/history",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a user's listening history (OAuth required)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
