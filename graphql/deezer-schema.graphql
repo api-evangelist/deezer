@@ -1,0 +1,910 @@
+"""
+Deezer GraphQL Schema
+Derived from the Deezer REST API (https://developers.deezer.com/api).
+Covers tracks, albums, artists, playlists, user library, editorial playlists,
+radio, podcasts, genres, charts, and recommendations.
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+"""ISO 8601 date-time string."""
+scalar DateTime
+
+"""ISO 8601 date string (YYYY-MM-DD)."""
+scalar Date
+
+"""A URL string."""
+scalar URL
+
+"""Duration in seconds."""
+scalar Duration
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+"""Gender options for a Deezer user profile."""
+enum Gender {
+  M
+  F
+  UNSPECIFIED
+}
+
+"""Explicit content level rating."""
+enum ExplicitContentLevel {
+  NOT_EXPLICIT
+  EXPLICIT
+  UNKNOWN
+}
+
+"""Profile visibility setting."""
+enum ProfileStatus {
+  PUBLIC
+  PRIVATE
+}
+
+"""Podcast episode type."""
+enum EpisodeType {
+  FULL
+  TRAILER
+  BONUS
+}
+
+"""Radio type."""
+enum RadioType {
+  ARTIST
+  GENRE
+  PROGRAM
+}
+
+"""Playlist type."""
+enum PlaylistType {
+  PLAYLIST
+  ALBUM
+  EPISODE_LIST
+}
+
+"""Sort order direction."""
+enum SortOrder {
+  ASC
+  DESC
+}
+
+"""Fields available for sorting tracks."""
+enum TrackSortField {
+  TITLE
+  ARTIST
+  ALBUM
+  RANK
+  RELEASE_DATE
+  DURATION
+}
+
+"""Fields available for sorting playlists."""
+enum PlaylistSortField {
+  TITLE
+  CREATOR
+  NB_TRACKS
+  CREATION_DATE
+  MODIFICATION_DATE
+}
+
+# ─── Pagination types ────────────────────────────────────────────────────────
+
+"""Generic pagination information."""
+type PageInfo {
+  """Total number of items available."""
+  total: Int!
+  """Index of the first item in the current page."""
+  offset: Int!
+  """Number of items requested per page."""
+  limit: Int!
+  """Whether there is a next page."""
+  hasNextPage: Boolean!
+  """Whether there is a previous page."""
+  hasPreviousPage: Boolean!
+}
+
+"""Paginated list of tracks."""
+type TrackConnection {
+  items: [Track!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of albums."""
+type AlbumConnection {
+  items: [Album!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of artists."""
+type ArtistConnection {
+  items: [Artist!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of playlists."""
+type PlaylistConnection {
+  items: [Playlist!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of podcasts."""
+type PodcastConnection {
+  items: [Podcast!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of episodes."""
+type EpisodeConnection {
+  items: [Episode!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of radios."""
+type RadioConnection {
+  items: [Radio!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of genres."""
+type GenreConnection {
+  items: [Genre!]!
+  pageInfo: PageInfo!
+}
+
+"""Paginated list of users."""
+type UserConnection {
+  items: [User!]!
+  pageInfo: PageInfo!
+}
+
+# ─── Core music types ────────────────────────────────────────────────────────
+
+"""A music track on Deezer."""
+type Track {
+  """Unique Deezer track ID."""
+  id: ID!
+  """Track title."""
+  title: String!
+  """Short version of the title."""
+  titleShort: String
+  """Track title with version info."""
+  titleVersion: String
+  """Deezer permalink for this track."""
+  link: URL!
+  """Duration in seconds."""
+  duration: Duration!
+  """Release date of the track."""
+  releaseDate: Date
+  """Deezer popularity rank."""
+  rank: Int
+  """Whether the track has explicit lyrics."""
+  explicitLyrics: Boolean!
+  """Explicit content level classification."""
+  explicitContentLyrics: ExplicitContentLevel
+  """Explicit content cover classification."""
+  explicitContentCover: ExplicitContentLevel
+  """Preview audio URL (30-second clip)."""
+  preview: URL
+  """BPM (beats per minute)."""
+  bpm: Float
+  """Gain in dB."""
+  gain: Float
+  """ISRC code."""
+  isrc: String
+  """Track position within its album."""
+  trackPosition: Int
+  """Disc number within the album."""
+  diskNumber: Int
+  """Primary contributing artist."""
+  artist: Artist!
+  """Album this track belongs to."""
+  album: Album!
+  """Contributors (featured artists, remixers, etc.)."""
+  contributors: [Artist!]
+  """Whether this track is available in the authenticated user's country."""
+  available: Boolean
+}
+
+"""A music album on Deezer."""
+type Album {
+  """Unique Deezer album ID."""
+  id: ID!
+  """Album title."""
+  title: String!
+  """UPC barcode."""
+  upc: String
+  """Deezer permalink."""
+  link: URL!
+  """Share URL."""
+  share: URL
+  """Album cover image (small, 56x56)."""
+  coverSmall: URL
+  """Album cover image (medium, 250x250)."""
+  cover: URL
+  """Album cover image (big, 500x500)."""
+  coverBig: URL
+  """Album cover image (extra large, 1000x1000)."""
+  coverXl: URL
+  """MD5 hash of the album image."""
+  md5Image: String
+  """Genre ID of the album."""
+  genreId: Int
+  """Genres associated with this album."""
+  genres: GenreConnection
+  """Label that released the album."""
+  label: String
+  """Total number of tracks."""
+  nbTracks: Int!
+  """Total duration in seconds."""
+  duration: Duration
+  """Number of fans/followers."""
+  fans: Int
+  """Release date."""
+  releaseDate: Date
+  """Recording type (e.g., ALBUM, SINGLE, EP, COMPILATION)."""
+  recordType: String
+  """Whether the album is available."""
+  available: Boolean
+  """Alternate artist (for compilations)."""
+  alternativeAlbum: Album
+  """Whether the album has explicit content."""
+  explicitLyrics: Boolean
+  """Explicit content level classification."""
+  explicitContentLyrics: ExplicitContentLevel
+  """Explicit content cover classification."""
+  explicitContentCover: ExplicitContentLevel
+  """Primary artist."""
+  artist: Artist!
+  """All contributing artists."""
+  contributors: [Artist!]
+  """Tracklist."""
+  tracks: TrackConnection
+}
+
+"""A music artist on Deezer."""
+type Artist {
+  """Unique Deezer artist ID."""
+  id: ID!
+  """Artist name."""
+  name: String!
+  """Deezer permalink."""
+  link: URL!
+  """Share URL."""
+  share: URL
+  """Artist picture (small, 56x56)."""
+  pictureSmall: URL
+  """Artist picture (medium, 250x250)."""
+  picture: URL
+  """Artist picture (big, 500x500)."""
+  pictureBig: URL
+  """Artist picture (extra large, 1000x1000)."""
+  pictureXl: URL
+  """Number of albums."""
+  nbAlbum: Int
+  """Number of fans/followers."""
+  nbFan: Int
+  """Whether the artist is on Deezer Radio."""
+  radio: Boolean
+  """Top tracks by this artist."""
+  topTracks: TrackConnection
+  """Albums by this artist."""
+  albums: AlbumConnection
+  """Related artists."""
+  related: ArtistConnection
+  """Playlists featuring this artist."""
+  playlists: PlaylistConnection
+}
+
+"""A playlist on Deezer."""
+type Playlist {
+  """Unique Deezer playlist ID."""
+  id: ID!
+  """Playlist title."""
+  title: String!
+  """Description."""
+  description: String
+  """Total duration of all tracks in seconds."""
+  duration: Duration!
+  """Whether the playlist is public."""
+  isPublic: Boolean!
+  """Whether the playlist is a loved tracks collection."""
+  isLovedTrack: Boolean
+  """Whether the playlist is collaborative."""
+  isCollaborative: Boolean
+  """Number of tracks."""
+  nbTracks: Int!
+  """Number of fans/followers."""
+  fans: Int
+  """Deezer permalink."""
+  link: URL!
+  """Share URL."""
+  share: URL
+  """Playlist picture (small)."""
+  pictureSmall: URL
+  """Playlist picture (medium)."""
+  picture: URL
+  """Playlist picture (big)."""
+  pictureBig: URL
+  """Playlist picture (extra large)."""
+  pictureXl: URL
+  """Checksum for cache invalidation."""
+  checksum: String
+  """Creator (owner) of the playlist."""
+  creator: UserSummary!
+  """Tracks in the playlist."""
+  tracks: TrackConnection
+  """Type of playlist."""
+  type: PlaylistType
+}
+
+# ─── User types ──────────────────────────────────────────────────────────────
+
+"""Lightweight user summary used in references."""
+type UserSummary {
+  id: ID!
+  name: String!
+  link: URL
+  picture: URL
+  pictureSmall: URL
+  pictureBig: URL
+  pictureXl: URL
+}
+
+"""A full Deezer user profile."""
+type User {
+  """Unique Deezer user ID."""
+  id: ID!
+  """Username / display name."""
+  name: String!
+  """Lastname (authenticated only)."""
+  lastname: String
+  """Firstname (authenticated only)."""
+  firstname: String
+  """Email address (authenticated only)."""
+  email: String
+  """User status/visibility."""
+  status: ProfileStatus
+  """Birthday (authenticated only)."""
+  birthday: Date
+  """Account creation date."""
+  inscriptionDate: DateTime
+  """Country ISO code."""
+  country: String
+  """Language locale (e.g., "en")."""
+  lang: String
+  """Gender."""
+  gender: Gender
+  """Profile picture URL."""
+  picture: URL
+  pictureSmall: URL
+  pictureBig: URL
+  pictureXl: URL
+  """Whether the user is Deezer Premium."""
+  isPremium: Boolean
+  """Number of tracks in loved list."""
+  tracklist: URL
+  """Deezer permalink."""
+  link: URL
+  """User's flow tracks (personalized radio)."""
+  flow: TrackConnection
+  """User's personal playlists."""
+  playlists: PlaylistConnection
+  """Followed artists."""
+  followedArtists: ArtistConnection
+  """Followers."""
+  followers: UserConnection
+  """User's followings."""
+  followings: UserConnection
+  """Recently listened tracks."""
+  history: TrackConnection
+  """Recommended tracks."""
+  recommendations: RecommendationResult
+  """Charts in the user's country."""
+  charts: Chart
+}
+
+# ─── Genre ──────────────────────────────────────────────────────────────────
+
+"""A music genre on Deezer."""
+type Genre {
+  """Unique genre ID."""
+  id: ID!
+  """Genre name."""
+  name: String!
+  """Genre picture (small)."""
+  pictureSmall: URL
+  """Genre picture (medium)."""
+  picture: URL
+  """Genre picture (big)."""
+  pictureBig: URL
+  """Genre picture (extra large)."""
+  pictureXl: URL
+  """Artists in this genre."""
+  artists: ArtistConnection
+  """Radios available for this genre."""
+  radios: RadioConnection
+  """Podcasts in this genre."""
+  podcasts: PodcastConnection
+}
+
+# ─── Editorial / Charts ──────────────────────────────────────────────────────
+
+"""Editorial content curated by Deezer."""
+type Editorial {
+  """Unique editorial ID."""
+  id: ID!
+  """Editorial name/title."""
+  name: String!
+  """Picture (small)."""
+  pictureSmall: URL
+  """Picture (medium)."""
+  picture: URL
+  """Picture (big)."""
+  pictureBig: URL
+  """Picture (extra large)."""
+  pictureXl: URL
+  """Curated track selection."""
+  selection: TrackConnection
+  """Featured charts."""
+  charts: Chart
+  """Featured releases."""
+  releases: AlbumConnection
+}
+
+"""Chart rankings for a region or genre."""
+type Chart {
+  """Top tracks."""
+  tracks: TrackConnection!
+  """Top albums."""
+  albums: AlbumConnection!
+  """Top artists."""
+  artists: ArtistConnection!
+  """Top playlists."""
+  playlists: PlaylistConnection!
+  """Top podcasts."""
+  podcasts: PodcastConnection
+}
+
+# ─── Radio ───────────────────────────────────────────────────────────────────
+
+"""A Deezer Radio station."""
+type Radio {
+  """Unique radio ID."""
+  id: ID!
+  """Station title."""
+  title: String!
+  """Station description."""
+  description: String
+  """Share URL."""
+  share: URL
+  """Station picture (small)."""
+  pictureSmall: URL
+  """Station picture (medium)."""
+  picture: URL
+  """Station picture (big)."""
+  pictureBig: URL
+  """Station picture (extra large)."""
+  pictureXl: URL
+  """Radio station type."""
+  type: RadioType
+  """Tracks available for this radio."""
+  tracks: TrackConnection
+}
+
+# ─── Podcast types ───────────────────────────────────────────────────────────
+
+"""A podcast on Deezer."""
+type Podcast {
+  """Unique podcast ID."""
+  id: ID!
+  """Podcast title."""
+  title: String!
+  """Description."""
+  description: String
+  """Whether the podcast is available."""
+  available: Boolean
+  """Number of fans/followers."""
+  fans: Int
+  """Deezer permalink."""
+  link: URL!
+  """Share URL."""
+  share: URL
+  """Picture (small)."""
+  pictureSmall: URL
+  """Picture (medium)."""
+  picture: URL
+  """Picture (big)."""
+  pictureBig: URL
+  """Picture (extra large)."""
+  pictureXl: URL
+  """Episodes of the podcast."""
+  episodes: EpisodeConnection
+}
+
+"""A single episode of a podcast."""
+type Episode {
+  """Unique episode ID."""
+  id: ID!
+  """Episode title."""
+  title: String!
+  """Episode description."""
+  description: String
+  """Whether this episode is available."""
+  available: Boolean
+  """Release date."""
+  releaseDate: DateTime
+  """Duration in seconds."""
+  duration: Duration!
+  """Direct audio stream URL."""
+  link: URL
+  """Share URL."""
+  share: URL
+  """Episode picture (small)."""
+  pictureSmall: URL
+  """Episode picture (medium)."""
+  picture: URL
+  """Episode picture (big)."""
+  pictureBig: URL
+  """Episode picture (extra large)."""
+  pictureXl: URL
+  """30-second preview URL."""
+  preview: URL
+  """Type of episode."""
+  episodeType: EpisodeType
+  """Whether it has explicit content."""
+  explicitContent: Boolean
+  """The parent podcast."""
+  podcast: Podcast!
+}
+
+# ─── Search & Recommendations ────────────────────────────────────────────────
+
+"""Aggregated search results across all content types."""
+type SearchResults {
+  tracks: TrackConnection
+  albums: AlbumConnection
+  artists: ArtistConnection
+  playlists: PlaylistConnection
+  podcasts: PodcastConnection
+  episodes: EpisodeConnection
+  radios: RadioConnection
+  users: UserConnection
+}
+
+"""Personalised recommendation buckets for a user."""
+type RecommendationResult {
+  """Recommended tracks."""
+  tracks: TrackConnection
+  """Recommended albums."""
+  albums: AlbumConnection
+  """Recommended artists."""
+  artists: ArtistConnection
+  """Recommended playlists."""
+  playlists: PlaylistConnection
+  """Recommended radios."""
+  radios: RadioConnection
+}
+
+# ─── Input types ─────────────────────────────────────────────────────────────
+
+"""Pagination arguments."""
+input PaginationInput {
+  """Zero-based offset."""
+  offset: Int = 0
+  """Maximum items to return (max 100)."""
+  limit: Int = 25
+}
+
+"""Input for searching Deezer content."""
+input SearchInput {
+  """Free-text search query."""
+  query: String!
+  """Strict mode — only exact matches."""
+  strict: Boolean = false
+}
+
+"""Sort specification for tracks."""
+input TrackSortInput {
+  field: TrackSortField = RANK
+  order: SortOrder = DESC
+}
+
+"""Sort specification for playlists."""
+input PlaylistSortInput {
+  field: PlaylistSortField = MODIFICATION_DATE
+  order: SortOrder = DESC
+}
+
+"""Input to create a new playlist."""
+input CreatePlaylistInput {
+  """Playlist title."""
+  title: String!
+  """Optional description."""
+  description: String
+  """Whether the playlist is public."""
+  isPublic: Boolean = true
+  """Initial track IDs to add."""
+  trackIds: [ID!]
+}
+
+"""Input to update an existing playlist."""
+input UpdatePlaylistInput {
+  """New title (optional)."""
+  title: String
+  """New description (optional)."""
+  description: String
+  """New public/private setting (optional)."""
+  isPublic: Boolean
+}
+
+"""Input to add tracks to a playlist."""
+input AddTracksInput {
+  """Target playlist ID."""
+  playlistId: ID!
+  """Ordered list of track IDs to add."""
+  trackIds: [ID!]!
+}
+
+"""Input to remove tracks from a playlist."""
+input RemoveTracksInput {
+  """Target playlist ID."""
+  playlistId: ID!
+  """Track IDs to remove."""
+  trackIds: [ID!]!
+}
+
+"""Input to reorder tracks in a playlist."""
+input ReorderTracksInput {
+  """Target playlist ID."""
+  playlistId: ID!
+  """ID of the track to move."""
+  trackId: ID!
+  """New position index (zero-based)."""
+  insertBefore: Int!
+}
+
+# ─── Mutation result types ───────────────────────────────────────────────────
+
+"""Result of creating a playlist."""
+type CreatePlaylistResult {
+  """Newly created playlist."""
+  playlist: Playlist
+  """Error message if creation failed."""
+  error: String
+}
+
+"""Result of updating a playlist."""
+type UpdatePlaylistResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of deleting a playlist."""
+type DeletePlaylistResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of a track-add operation."""
+type AddTracksResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of a track-remove operation."""
+type RemoveTracksResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of a track-reorder operation."""
+type ReorderTracksResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of a follow operation."""
+type FollowResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of an unfollow operation."""
+type UnfollowResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of adding a track to the user's favorites."""
+type FavoriteTrackResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of removing a track from the user's favorites."""
+type UnfavoriteTrackResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of adding a podcast to the user's subscriptions."""
+type SubscribePodcastResult {
+  success: Boolean!
+  error: String
+}
+
+"""Result of removing a podcast from the user's subscriptions."""
+type UnsubscribePodcastResult {
+  success: Boolean!
+  error: String
+}
+
+# ─── Root types ──────────────────────────────────────────────────────────────
+
+type Query {
+  # ── Track queries ──────────────────────────────────────────────────────────
+  """Fetch a single track by Deezer ID."""
+  track(id: ID!): Track
+
+  """Fetch multiple tracks by ID."""
+  tracks(ids: [ID!]!): [Track]
+
+  """Search tracks."""
+  searchTracks(
+    input: SearchInput!
+    sort: TrackSortInput
+    pagination: PaginationInput
+  ): TrackConnection
+
+  # ── Album queries ──────────────────────────────────────────────────────────
+  """Fetch a single album by Deezer ID."""
+  album(id: ID!): Album
+
+  """Fetch multiple albums by ID."""
+  albums(ids: [ID!]!): [Album]
+
+  """Search albums."""
+  searchAlbums(
+    input: SearchInput!
+    pagination: PaginationInput
+  ): AlbumConnection
+
+  # ── Artist queries ─────────────────────────────────────────────────────────
+  """Fetch a single artist by Deezer ID."""
+  artist(id: ID!): Artist
+
+  """Fetch multiple artists by ID."""
+  artists(ids: [ID!]!): [Artist]
+
+  """Search artists."""
+  searchArtists(
+    input: SearchInput!
+    pagination: PaginationInput
+  ): ArtistConnection
+
+  # ── Playlist queries ───────────────────────────────────────────────────────
+  """Fetch a single playlist by Deezer ID."""
+  playlist(id: ID!): Playlist
+
+  """Search playlists."""
+  searchPlaylists(
+    input: SearchInput!
+    sort: PlaylistSortInput
+    pagination: PaginationInput
+  ): PlaylistConnection
+
+  # ── Genre queries ──────────────────────────────────────────────────────────
+  """List all available genres."""
+  genres(pagination: PaginationInput): GenreConnection
+
+  """Fetch a single genre by ID."""
+  genre(id: ID!): Genre
+
+  # ── Chart / Editorial queries ──────────────────────────────────────────────
+  """Fetch overall Deezer charts (global or by genre)."""
+  chart(genreId: ID): Chart
+
+  """List editorial selections."""
+  editorials(pagination: PaginationInput): [Editorial!]
+
+  """Fetch a single editorial by ID."""
+  editorial(id: ID!): Editorial
+
+  # ── Radio queries ──────────────────────────────────────────────────────────
+  """List all top radios."""
+  radios(pagination: PaginationInput): RadioConnection
+
+  """Fetch a single radio by ID."""
+  radio(id: ID!): Radio
+
+  """Fetch genre-based radios."""
+  genreRadios(genreId: ID!, pagination: PaginationInput): RadioConnection
+
+  # ── Podcast & Episode queries ──────────────────────────────────────────────
+  """Fetch a single podcast by ID."""
+  podcast(id: ID!): Podcast
+
+  """Search podcasts."""
+  searchPodcasts(
+    input: SearchInput!
+    pagination: PaginationInput
+  ): PodcastConnection
+
+  """Fetch a single episode by ID."""
+  episode(id: ID!): Episode
+
+  # ── User queries ───────────────────────────────────────────────────────────
+  """Fetch the authenticated user's profile."""
+  me: User
+
+  """Fetch any user's public profile by ID."""
+  user(id: ID!): User
+
+  """Search users."""
+  searchUsers(
+    input: SearchInput!
+    pagination: PaginationInput
+  ): UserConnection
+
+  # ── Global search ──────────────────────────────────────────────────────────
+  """Cross-type full-text search."""
+  search(
+    input: SearchInput!
+    pagination: PaginationInput
+  ): SearchResults
+}
+
+type Mutation {
+  # ── Playlist mutations ─────────────────────────────────────────────────────
+  """Create a new playlist in the authenticated user's library."""
+  createPlaylist(input: CreatePlaylistInput!): CreatePlaylistResult!
+
+  """Update metadata on a playlist owned by the authenticated user."""
+  updatePlaylist(id: ID!, input: UpdatePlaylistInput!): UpdatePlaylistResult!
+
+  """Delete a playlist owned by the authenticated user."""
+  deletePlaylist(id: ID!): DeletePlaylistResult!
+
+  """Add tracks to a playlist."""
+  addTracks(input: AddTracksInput!): AddTracksResult!
+
+  """Remove tracks from a playlist."""
+  removeTracks(input: RemoveTracksInput!): RemoveTracksResult!
+
+  """Reorder a track within a playlist."""
+  reorderTrack(input: ReorderTracksInput!): ReorderTracksResult!
+
+  # ── Library / favorites mutations ──────────────────────────────────────────
+  """Add a track to the authenticated user's favorite tracks."""
+  favoriteTrack(trackId: ID!): FavoriteTrackResult!
+
+  """Remove a track from the authenticated user's favorite tracks."""
+  unfavoriteTrack(trackId: ID!): UnfavoriteTrackResult!
+
+  """Add an album to the user's library."""
+  favoriteAlbum(albumId: ID!): FavoriteTrackResult!
+
+  """Remove an album from the user's library."""
+  unfavoriteAlbum(albumId: ID!): UnfavoriteTrackResult!
+
+  # ── Artist follow mutations ────────────────────────────────────────────────
+  """Follow an artist."""
+  followArtist(artistId: ID!): FollowResult!
+
+  """Unfollow an artist."""
+  unfollowArtist(artistId: ID!): UnfollowResult!
+
+  # ── User follow mutations ──────────────────────────────────────────────────
+  """Follow a user."""
+  followUser(userId: ID!): FollowResult!
+
+  """Unfollow a user."""
+  unfollowUser(userId: ID!): UnfollowResult!
+
+  # ── Podcast subscription mutations ─────────────────────────────────────────
+  """Subscribe to a podcast."""
+  subscribePodcast(podcastId: ID!): SubscribePodcastResult!
+
+  """Unsubscribe from a podcast."""
+  unsubscribePodcast(podcastId: ID!): UnsubscribePodcastResult!
+}
