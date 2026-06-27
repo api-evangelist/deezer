@@ -37,7 +37,7 @@ apis:
     url: https://developers.deezer.com/api
   - type: Authentication
     url: https://developers.deezer.com/api/oauth
-  - type: SDK
+  - type: SDKs
     url: https://developers.deezer.com/sdk
   - url: graphql/deezer-graphql.md
     type: GraphQL
