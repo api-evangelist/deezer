@@ -1,0 +1,53 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/deezer-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/deezer-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://connect.deezer.com/oauth/auth.php
+    tokenUrl: https://connect.deezer.com/oauth/access_token.php
+scopes:
+- scope: basic_access
+  description: Basic profile info
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: delete_library
+  description: Delete from user's library
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: email
+  description: Get user's email address
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: listening_history
+  description: Read listening history
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: manage_community
+  description: Manage user's community
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: manage_library
+  description: Manage user's library
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml
+- scope: offline_access
+  description: Long-lived access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/deezer-openapi.yml

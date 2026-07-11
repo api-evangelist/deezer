@@ -42,6 +42,8 @@ apis:
   - url: graphql/deezer-graphql.md
     type: GraphQL
 common:
+- type: OAuthScopes
+  url: scopes/deezer-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/deezer
 - type: LinkedIn
