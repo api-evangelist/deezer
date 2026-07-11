@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/deezer-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://connect.deezer.com/oauth/auth.php
+    tokenUrl: https://connect.deezer.com/oauth/access_token.php
+    scopes: 7
+  sources:
+  - openapi/deezer-openapi.yml

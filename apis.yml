@@ -42,6 +42,12 @@ apis:
   - url: graphql/deezer-graphql.md
     type: GraphQL
 common:
+- type: VulnerabilityDisclosure
+  url: security/deezer-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/deezer-domain-security.yml
+- type: Authentication
+  url: authentication/deezer-authentication.yml
 - type: OAuthScopes
   url: scopes/deezer-scopes.yml
 - type: GitHubOrganization
