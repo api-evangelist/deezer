@@ -42,6 +42,8 @@ apis:
   - url: graphql/deezer-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/deezer-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/deezer-vulnerability-disclosure.yml
 - type: DomainSecurity
