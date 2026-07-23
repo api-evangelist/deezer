@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Deezer Public Album Chart API
+  description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
+  version: 1.0.0
+servers:
+- url: https://api.deezer.com
+  description: Deezer public REST API
+security: []
+tags:
+- name: Chart
+paths:
+  /chart:
+    get:
+      tags:
+      - Chart
+      summary: Get global chart (tracks, albums, artists, playlists, podcasts)
+      responses:
+        '200':
+          description: Chart object
+  /chart/{genre_id}:
+    get:
+      tags:
+      - Chart
+      summary: Get chart for a genre
+      parameters:
+      - in: path
+        name: genre_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Genre chart
+  /chart/{genre_id}/tracks:
+    get:
+      tags:
+      - Chart
+      summary: Get top tracks for a genre
+      parameters:
+      - in: path
+        name: genre_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Tracks
+  /chart/{genre_id}/albums:
+    get:
+      tags:
+      - Chart
+      summary: Get top albums for a genre
+      parameters:
+      - in: path
+        name: genre_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Albums
+  /chart/{genre_id}/artists:
+    get:
+      tags:
+      - Chart
+      summary: Get top artists for a genre
+      parameters:
+      - in: path
+        name: genre_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Artists
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://connect.deezer.com/oauth/auth.php
+          tokenUrl: https://connect.deezer.com/oauth/access_token.php
+          scopes:
+            basic_access: Basic profile info
+            email: Get user's email address
+            offline_access: Long-lived access
+            manage_library: Manage user's library
+            manage_community: Manage user's community
+            delete_library: Delete from user's library
+            listening_history: Read listening history

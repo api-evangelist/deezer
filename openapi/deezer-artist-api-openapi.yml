@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Deezer Public Album Artist API
+  description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
+  version: 1.0.0
+servers:
+- url: https://api.deezer.com
+  description: Deezer public REST API
+security: []
+tags:
+- name: Artist
+paths:
+  /artist/{id}:
+    get:
+      tags:
+      - Artist
+      summary: Get an artist by id
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Artist
+  /artist/{id}/top:
+    get:
+      tags:
+      - Artist
+      summary: Get top tracks for an artist
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Top tracks
+  /artist/{id}/albums:
+    get:
+      tags:
+      - Artist
+      summary: List albums by an artist
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Albums
+  /artist/{id}/related:
+    get:
+      tags:
+      - Artist
+      summary: List related artists
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Related artists
+  /artist/{id}/radio:
+    get:
+      tags:
+      - Artist
+      summary: Get a radio for the artist
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Radio tracks
+  /artist/{id}/playlists:
+    get:
+      tags:
+      - Artist
+      summary: List playlists featuring the artist
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Playlists
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://connect.deezer.com/oauth/auth.php
+          tokenUrl: https://connect.deezer.com/oauth/access_token.php
+          scopes:
+            basic_access: Basic profile info
+            email: Get user's email address
+            offline_access: Long-lived access
+            manage_library: Manage user's library
+            manage_community: Manage user's community
+            delete_library: Delete from user's library
+            listening_history: Read listening history

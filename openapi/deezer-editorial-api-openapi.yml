@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Deezer Public Album Editorial API
+  description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
+  version: 1.0.0
+servers:
+- url: https://api.deezer.com
+  description: Deezer public REST API
+security: []
+tags:
+- name: Editorial
+paths:
+  /editorial:
+    get:
+      tags:
+      - Editorial
+      summary: List editorial sections
+      responses:
+        '200':
+          description: Editorial
+  /editorial/{id}:
+    get:
+      tags:
+      - Editorial
+      summary: Get an editorial section
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Editorial section
+  /editorial/{id}/releases:
+    get:
+      tags:
+      - Editorial
+      summary: List releases for an editorial section
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Releases
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://connect.deezer.com/oauth/auth.php
+          tokenUrl: https://connect.deezer.com/oauth/access_token.php
+          scopes:
+            basic_access: Basic profile info
+            email: Get user's email address
+            offline_access: Long-lived access
+            manage_library: Manage user's library
+            manage_community: Manage user's community
+            delete_library: Delete from user's library
+            listening_history: Read listening history
