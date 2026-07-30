@@ -6,7 +6,20 @@ description: Deezer is a global music streaming service. The Deezer API is a pub
   REST API for tracks, albums, artists, playlists, charts, search, and authenticated
   user library. It uses OAuth 2.0 for user- scoped operations and is free to use within
   published rate limits.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/deezer.png
 tags:
 - Music
 - Streaming
@@ -20,9 +33,10 @@ specificationVersion: '0.19'
 apis:
 - aid: deezer:platform
   name: Deezer API
-  description: Public REST API covering /track, /album, /artist, /playlist, /chart,
-    /search, /genre, /radio, /user, and /editorial. Public endpoints (catalog, search)
-    are unauthenticated and return JSON; user-scoped operations require OAuth 2.0.
+  description: >-
+    Public REST API covering /track, /album, /artist, /playlist, /chart, /search, /genre, /radio, /user,
+    and /editorial. Public endpoints (catalog, search) are unauthenticated and return JSON; user-scoped
+    operations require OAuth 2.0.
   humanURL: https://developers.deezer.com/api
   baseURL: https://api.deezer.com
   tags:
@@ -41,6 +55,116 @@ apis:
     url: https://developers.deezer.com/sdk
   - url: graphql/deezer-graphql.md
     type: GraphQL
+- aid: deezer:deezer-album-api
+  name: Deezer Album API
+  description: The Album API from Deezer — 2 operation(s) for album.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Album
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-album-api-openapi.yml
+- aid: deezer:deezer-artist-api
+  name: Deezer Artist API
+  description: The Artist API from Deezer — 6 operation(s) for artist.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Artist
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-artist-api-openapi.yml
+- aid: deezer:deezer-chart-api
+  name: Deezer Chart API
+  description: The Chart API from Deezer — 5 operation(s) for chart.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Chart
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-chart-api-openapi.yml
+- aid: deezer:deezer-editorial-api
+  name: Deezer Editorial API
+  description: The Editorial API from Deezer — 3 operation(s) for editorial.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Editorial
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-editorial-api-openapi.yml
+- aid: deezer:deezer-genre-api
+  name: Deezer Genre API
+  description: The Genre API from Deezer — 3 operation(s) for genre.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Genre
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-genre-api-openapi.yml
+- aid: deezer:deezer-infos-api
+  name: Deezer Infos API
+  description: The Infos API from Deezer — 1 operation(s) for infos.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Infos
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-infos-api-openapi.yml
+- aid: deezer:deezer-playlist-api
+  name: Deezer Playlist API
+  description: The Playlist API from Deezer — 2 operation(s) for playlist.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Playlist
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-playlist-api-openapi.yml
+- aid: deezer:deezer-radio-api
+  name: Deezer Radio API
+  description: The Radio API from Deezer — 3 operation(s) for radio.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Radio
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-radio-api-openapi.yml
+- aid: deezer:deezer-search-api
+  name: Deezer Search API
+  description: The Search API from Deezer — 5 operation(s) for search.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-search-api-openapi.yml
+- aid: deezer:deezer-track-api
+  name: Deezer Track API
+  description: The Track API from Deezer — 1 operation(s) for track.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-track-api-openapi.yml
+- aid: deezer:deezer-user-api
+  name: Deezer User API
+  description: The User API from Deezer — 7 operation(s) for user.
+  humanURL: https://developers.deezer.com/api
+  baseURL: https://api.deezer.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/deezer-user-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/deezer-agentic-access.yml
