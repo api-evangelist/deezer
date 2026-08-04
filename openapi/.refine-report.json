@@ -1,0 +1,34 @@
+{
+  "provider": "deezer",
+  "sources": [
+    "deezer-album-api-openapi.yml",
+    "deezer-artist-api-openapi.yml",
+    "deezer-chart-api-openapi.yml",
+    "deezer-editorial-api-openapi.yml",
+    "deezer-genre-api-openapi.yml",
+    "deezer-infos-api-openapi.yml",
+    "deezer-playlist-api-openapi.yml",
+    "deezer-radio-api-openapi.yml",
+    "deezer-search-api-openapi.yml",
+    "deezer-track-api-openapi.yml",
+    "deezer-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "deezer-album-api-openapi.yml",
+    "deezer-artist-api-openapi.yml",
+    "deezer-chart-api-openapi.yml",
+    "deezer-editorial-api-openapi.yml",
+    "deezer-genre-api-openapi.yml",
+    "deezer-infos-api-openapi.yml",
+    "deezer-playlist-api-openapi.yml",
+    "deezer-radio-api-openapi.yml",
+    "deezer-search-api-openapi.yml",
+    "deezer-track-api-openapi.yml",
+    "deezer-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

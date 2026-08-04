@@ -1,0 +1,494 @@
+openapi: 3.1.0
+info:
+  title: Deezer Public API
+  description: >-
+    Public REST API for the Deezer music streaming service. Catalog endpoints
+    (tracks, albums, artists, playlists, charts, genres, radios, editorial,
+    search) are available unauthenticated; user-scoped endpoints require an
+    OAuth 2.0 access token issued via the Deezer Connect flow.
+  version: "1.0.0"
+servers:
+  - url: https://api.deezer.com
+    description: Deezer public REST API
+security: []
+tags:
+  - name: Track
+  - name: Album
+  - name: Artist
+  - name: Playlist
+  - name: Chart
+  - name: Search
+  - name: Genre
+  - name: Radio
+  - name: Editorial
+  - name: User
+  - name: Infos
+paths:
+  /infos:
+    get:
+      tags: [Infos]
+      summary: Get country, hosting, and pop-the-flow info
+      responses:
+        '200': { description: Country and service info }
+  /track/{id}:
+    get:
+      tags: [Track]
+      summary: Get a track by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Track }
+  /album/{id}:
+    get:
+      tags: [Album]
+      summary: Get an album by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Album }
+  /album/{id}/tracks:
+    get:
+      tags: [Album]
+      summary: List tracks on an album
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Tracks on album }
+  /artist/{id}:
+    get:
+      tags: [Artist]
+      summary: Get an artist by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Artist }
+  /artist/{id}/top:
+    get:
+      tags: [Artist]
+      summary: Get top tracks for an artist
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+        - in: query
+          name: limit
+          schema: { type: integer }
+      responses:
+        '200': { description: Top tracks }
+  /artist/{id}/albums:
+    get:
+      tags: [Artist]
+      summary: List albums by an artist
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Albums }
+  /artist/{id}/related:
+    get:
+      tags: [Artist]
+      summary: List related artists
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Related artists }
+  /artist/{id}/radio:
+    get:
+      tags: [Artist]
+      summary: Get a radio for the artist
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Radio tracks }
+  /artist/{id}/playlists:
+    get:
+      tags: [Artist]
+      summary: List playlists featuring the artist
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Playlists }
+  /playlist/{id}:
+    get:
+      tags: [Playlist]
+      summary: Get a playlist by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Playlist }
+  /playlist/{id}/tracks:
+    get:
+      tags: [Playlist]
+      summary: List tracks in a playlist
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+      responses:
+        '200': { description: Tracks }
+    post:
+      tags: [Playlist]
+      summary: Add tracks to a playlist (OAuth required)
+      security:
+        - oauth2: [manage_library]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+        - in: query
+          name: songs
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Tracks added }
+    delete:
+      tags: [Playlist]
+      summary: Remove tracks from a playlist (OAuth required)
+      security:
+        - oauth2: [manage_library]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64 }
+        - in: query
+          name: songs
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Tracks removed }
+  /chart:
+    get:
+      tags: [Chart]
+      summary: Get global chart (tracks, albums, artists, playlists, podcasts)
+      responses:
+        '200': { description: Chart object }
+  /chart/{genre_id}:
+    get:
+      tags: [Chart]
+      summary: Get chart for a genre
+      parameters:
+        - in: path
+          name: genre_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Genre chart }
+  /chart/{genre_id}/tracks:
+    get:
+      tags: [Chart]
+      summary: Get top tracks for a genre
+      parameters:
+        - in: path
+          name: genre_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Tracks }
+  /chart/{genre_id}/albums:
+    get:
+      tags: [Chart]
+      summary: Get top albums for a genre
+      parameters:
+        - in: path
+          name: genre_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Albums }
+  /chart/{genre_id}/artists:
+    get:
+      tags: [Chart]
+      summary: Get top artists for a genre
+      parameters:
+        - in: path
+          name: genre_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Artists }
+  /search:
+    get:
+      tags: [Search]
+      summary: Search across the Deezer catalog
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+        - in: query
+          name: order
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer }
+        - in: query
+          name: index
+          schema: { type: integer }
+      responses:
+        '200': { description: Search results }
+  /search/album:
+    get:
+      tags: [Search]
+      summary: Search albums
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Albums }
+  /search/artist:
+    get:
+      tags: [Search]
+      summary: Search artists
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Artists }
+  /search/playlist:
+    get:
+      tags: [Search]
+      summary: Search playlists
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Playlists }
+  /search/track:
+    get:
+      tags: [Search]
+      summary: Search tracks
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Tracks }
+  /genre:
+    get:
+      tags: [Genre]
+      summary: List genres
+      responses:
+        '200': { description: Genres }
+  /genre/{id}:
+    get:
+      tags: [Genre]
+      summary: Get a genre
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Genre }
+  /genre/{id}/artists:
+    get:
+      tags: [Genre]
+      summary: List artists in a genre
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Artists }
+  /radio:
+    get:
+      tags: [Radio]
+      summary: List radios
+      responses:
+        '200': { description: Radios }
+  /radio/{id}:
+    get:
+      tags: [Radio]
+      summary: Get a radio
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Radio }
+  /radio/{id}/tracks:
+    get:
+      tags: [Radio]
+      summary: Get tracks for a radio
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Tracks }
+  /editorial:
+    get:
+      tags: [Editorial]
+      summary: List editorial sections
+      responses:
+        '200': { description: Editorial }
+  /editorial/{id}:
+    get:
+      tags: [Editorial]
+      summary: Get an editorial section
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Editorial section }
+  /editorial/{id}/releases:
+    get:
+      tags: [Editorial]
+      summary: List releases for an editorial section
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Releases }
+  /user/me:
+    get:
+      tags: [User]
+      summary: Get the authenticated user
+      security:
+        - oauth2: [basic_access]
+      responses:
+        '200': { description: User profile }
+  /user/{id}:
+    get:
+      tags: [User]
+      summary: Get a user by id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: User }
+  /user/{id}/playlists:
+    get:
+      tags: [User]
+      summary: List a user's playlists
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Playlists }
+    post:
+      tags: [User]
+      summary: Create a playlist for the user (OAuth required)
+      security:
+        - oauth2: [manage_library]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+        - in: query
+          name: title
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Playlist id returned }
+  /user/{id}/tracks:
+    get:
+      tags: [User]
+      summary: List a user's favorite tracks
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Tracks }
+  /user/{id}/albums:
+    get:
+      tags: [User]
+      summary: List a user's favorite albums
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Albums }
+  /user/{id}/artists:
+    get:
+      tags: [User]
+      summary: List a user's favorite artists
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Artists }
+  /user/{id}/history:
+    get:
+      tags: [User]
+      summary: Get a user's listening history (OAuth required)
+      security:
+        - oauth2: [listening_history]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: History }
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://connect.deezer.com/oauth/auth.php
+          tokenUrl: https://connect.deezer.com/oauth/access_token.php
+          scopes:
+            basic_access: Basic profile info
+            email: Get user's email address
+            offline_access: Long-lived access
+            manage_library: Manage user's library
+            manage_community: Manage user's community
+            delete_library: Delete from user's library
+            listening_history: Read listening history
