@@ -1,0 +1,414 @@
+{
+  "item": [
+    {
+      "id": "068f36c3-c151-49b7-94f0-a7f9c40f9f38",
+      "name": "Playlist",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0823953-4505-4391-aecf-831f224c9194",
+          "name": "Get a playlist by id",
+          "request": {
+            "name": "Get a playlist by id",
+            "description": {},
+            "url": {
+              "path": [
+                "playlist",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c334a242-85a9-45c6-a4ba-7f0367a394b9",
+              "name": "Playlist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlist",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9700316-1992-448b-b046-4afec7435f36",
+          "name": "List tracks in a playlist",
+          "request": {
+            "name": "List tracks in a playlist",
+            "description": {},
+            "url": {
+              "path": [
+                "playlist",
+                ":id",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15874914-0827-442c-9c3f-c22f023e63b5",
+              "name": "Tracks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlist",
+                    ":id",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72daca99-cb98-4504-9b6b-704560e6c903",
+          "name": "Add tracks to a playlist (OAuth required)",
+          "request": {
+            "name": "Add tracks to a playlist (OAuth required)",
+            "description": {},
+            "url": {
+              "path": [
+                "playlist",
+                ":id",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "songs",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "basic_access email offline_access manage_library manage_community delete_library listening_history"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://connect.deezer.com/oauth/access_token.php"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://connect.deezer.com/oauth/auth.php"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a74d71f-c258-4cf0-bf4d-138128afe3ef",
+              "name": "Tracks added",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlist",
+                    ":id",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "songs",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38b7cb45-f324-41d0-94bd-f06343941372",
+          "name": "Remove tracks from a playlist (OAuth required)",
+          "request": {
+            "name": "Remove tracks from a playlist (OAuth required)",
+            "description": {},
+            "url": {
+              "path": [
+                "playlist",
+                ":id",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "songs",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "basic_access email offline_access manage_library manage_community delete_library listening_history"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://connect.deezer.com/oauth/access_token.php"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://connect.deezer.com/oauth/auth.php"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e2c6eaa5-0972-4e6d-b1b1-6ffa4da20f5b",
+              "name": "Tracks removed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlist",
+                    ":id",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "songs",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.deezer.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "758b84e6-1004-40cc-b60e-5176c1081a84",
+    "name": "Deezer Public Album Playlist API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.",
+      "type": "text/plain"
+    }
+  }
+}

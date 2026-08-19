@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Radio API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Radio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List radios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio"
+          },
+          "docs": "List radios"
+        },
+        {
+          "info": {
+            "name": "Get a radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a radio"
+        },
+        {
+          "info": {
+            "name": "Get tracks for a radio",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/radio/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get tracks for a radio"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

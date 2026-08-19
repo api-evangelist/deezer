@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Infos API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Infos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get country, hosting, and pop-the-flow info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/infos"
+          },
+          "docs": "Get country, hosting, and pop-the-flow info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

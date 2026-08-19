@@ -1,0 +1,87 @@
+{
+  "item": [
+    {
+      "id": "643ff1e9-1ebd-49fc-94eb-f61cd6cd81e1",
+      "name": "Infos",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58ffc182-40e5-4439-829b-bee4a52bdb19",
+          "name": "Get country, hosting, and pop-the-flow info",
+          "request": {
+            "name": "Get country, hosting, and pop-the-flow info",
+            "description": {},
+            "url": {
+              "path": [
+                "infos"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e9adcc9-4c87-4b0d-a168-4f28630596ca",
+              "name": "Country and service info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "infos"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.deezer.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1c0f25df-692c-4ea9-a5cf-493a8838b9de",
+    "name": "Deezer Public Album Infos API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.",
+      "type": "text/plain"
+    }
+  }
+}

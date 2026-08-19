@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Genre API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Genre",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre"
+          },
+          "docs": "List genres"
+        },
+        {
+          "info": {
+            "name": "Get a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a genre"
+        },
+        {
+          "info": {
+            "name": "List artists in a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/genre/:id/artists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List artists in a genre"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

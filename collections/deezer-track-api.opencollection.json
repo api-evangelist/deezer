@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Track API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Track",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a track by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/track/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a track by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

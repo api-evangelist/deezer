@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Chart API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get global chart (tracks, albums, artists, playlists, podcasts)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart"
+          },
+          "docs": "Get global chart (tracks, albums, artists, playlists, podcasts)"
+        },
+        {
+          "info": {
+            "name": "Get chart for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get chart for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top tracks for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/tracks",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top tracks for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top albums for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/albums",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top albums for a genre"
+        },
+        {
+          "info": {
+            "name": "Get top artists for a genre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/chart/:genre_id/artists",
+            "params": [
+              {
+                "name": "genre_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get top artists for a genre"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

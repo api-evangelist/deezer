@@ -1,0 +1,190 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album User API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/me",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the authenticated user"
+        },
+        {
+          "info": {
+            "name": "Get a user by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a user by id"
+        },
+        {
+          "info": {
+            "name": "List a user's playlists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/playlists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's playlists"
+        },
+        {
+          "info": {
+            "name": "Create a playlist for the user (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.deezer.com/user/:id/playlists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a playlist for the user (OAuth required)"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite tracks"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite albums",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/albums",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite albums"
+        },
+        {
+          "info": {
+            "name": "List a user's favorite artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/artists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a user's favorite artists"
+        },
+        {
+          "info": {
+            "name": "Get a user's listening history (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/user/:id/history",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get a user's listening history (OAuth required)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

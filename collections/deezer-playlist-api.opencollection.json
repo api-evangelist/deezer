@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Playlist API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Playlist",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a playlist by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/playlist/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a playlist by id"
+        },
+        {
+          "info": {
+            "name": "List tracks in a playlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tracks in a playlist"
+        },
+        {
+          "info": {
+            "name": "Add tracks to a playlist (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "songs",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add tracks to a playlist (OAuth required)"
+        },
+        {
+          "info": {
+            "name": "Remove tracks from a playlist (OAuth required)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.deezer.com/playlist/:id/tracks",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "songs",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://connect.deezer.com/oauth/auth.php",
+              "accessTokenUrl": "https://connect.deezer.com/oauth/access_token.php",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove tracks from a playlist (OAuth required)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

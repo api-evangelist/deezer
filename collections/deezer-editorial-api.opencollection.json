@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Deezer Public Album Editorial API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Editorial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List editorial sections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial"
+          },
+          "docs": "List editorial sections"
+        },
+        {
+          "info": {
+            "name": "Get an editorial section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an editorial section"
+        },
+        {
+          "info": {
+            "name": "List releases for an editorial section",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.deezer.com/editorial/:id/releases",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List releases for an editorial section"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
