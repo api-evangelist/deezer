@@ -24,6 +24,13 @@ tags:
 - Music
 - Streaming
 - Audio
+- Authentication
+- Catalog
+- Playlists
+tags_raw:
+- Music
+- Streaming
+- Audio
 - OAuth
 - Catalog
 - Playlists
@@ -71,6 +78,8 @@ apis:
   humanURL: https://developers.deezer.com/api
   baseURL: https://api.deezer.com
   tags:
+  - Artists
+  tags_raw:
   - Artist
   properties:
   - type: OpenAPI
