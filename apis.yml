@@ -6,6 +6,18 @@ description: Deezer is a global music streaming service. The Deezer API is a pub
   REST API for tracks, albums, artists, playlists, charts, search, and authenticated
   user library. It uses OAuth 2.0 for user- scoped operations and is free to use within
   published rate limits.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
