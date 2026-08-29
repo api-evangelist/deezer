@@ -1,0 +1,26 @@
+slug: deezer
+provider: Deezer
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: User
+  spec_file: deezer-user-api-openapi.yml
+  capability_id: BC-3750
+  capability_id_l1: BC-3750
+  capability_name: Audience & Viewer Management
+  confidence: 0.7
+  evidence: GET /user/me  Get the authenticated user; GET /user/{id}/tracks  List a user's favorite tracks;
+    GET /user/{id}/history  Get a user's listening history (OAuth required)
+  reason: Operations manage consumer listener accounts, their libraries/playlists and listening history
+    on a direct-to-consumer content service — audience/viewer (listener) management. Ambiguous between
+    identity stewardship and engagement, so L2 left null.

@@ -187,6 +187,9 @@ apis:
   - type: OpenAPI
     url: openapi/deezer-user-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/deezer-capability-edges.yml
+  name: Deezer Business Capability Map
 - type: AgenticAccess
   url: agentic-access/deezer-agentic-access.yml
 - type: VulnerabilityDisclosure
