@@ -90,7 +90,7 @@ apis:
   humanURL: https://developers.deezer.com/api
   baseURL: https://api.deezer.com
   tags:
-  - Artist
+  - Artists
   tags_raw:
   - Artist
   properties:
