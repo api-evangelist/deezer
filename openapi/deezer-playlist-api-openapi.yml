@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Deezer Public Album Playlist API
+  title: Deezer Public Playlist API
   description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
   version: 1.0.0
 servers:
@@ -25,6 +25,8 @@ paths:
       responses:
         '200':
           description: Playlist
+      operationId: getPlaylistById
+      x-operation-id-source: derived
   /playlist/{id}/tracks:
     get:
       tags:
@@ -40,6 +42,8 @@ paths:
       responses:
         '200':
           description: Tracks
+      operationId: getPlaylistByIdTracks
+      x-operation-id-source: derived
     post:
       tags:
       - Playlist
@@ -62,6 +66,8 @@ paths:
       responses:
         '200':
           description: Tracks added
+      operationId: postPlaylistByIdTracks
+      x-operation-id-source: derived
     delete:
       tags:
       - Playlist
@@ -84,6 +90,8 @@ paths:
       responses:
         '200':
           description: Tracks removed
+      operationId: deletePlaylistByIdTracks
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

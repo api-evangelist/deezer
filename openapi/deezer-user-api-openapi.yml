@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Deezer Public Album User API
+  title: Deezer Public User API
   description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
   version: 1.0.0
 servers:
@@ -21,6 +21,8 @@ paths:
       responses:
         '200':
           description: User profile
+      operationId: getUserMe
+      x-operation-id-source: derived
   /user/{id}:
     get:
       tags:
@@ -35,6 +37,8 @@ paths:
       responses:
         '200':
           description: User
+      operationId: getUserById
+      x-operation-id-source: derived
   /user/{id}/playlists:
     get:
       tags:
@@ -49,6 +53,8 @@ paths:
       responses:
         '200':
           description: Playlists
+      operationId: getUserByIdPlaylists
+      x-operation-id-source: derived
     post:
       tags:
       - User
@@ -70,6 +76,8 @@ paths:
       responses:
         '200':
           description: Playlist id returned
+      operationId: postUserByIdPlaylists
+      x-operation-id-source: derived
   /user/{id}/tracks:
     get:
       tags:
@@ -84,6 +92,8 @@ paths:
       responses:
         '200':
           description: Tracks
+      operationId: getUserByIdTracks
+      x-operation-id-source: derived
   /user/{id}/albums:
     get:
       tags:
@@ -98,6 +108,8 @@ paths:
       responses:
         '200':
           description: Albums
+      operationId: getUserByIdAlbums
+      x-operation-id-source: derived
   /user/{id}/artists:
     get:
       tags:
@@ -112,6 +124,8 @@ paths:
       responses:
         '200':
           description: Artists
+      operationId: getUserByIdArtists
+      x-operation-id-source: derived
   /user/{id}/history:
     get:
       tags:
@@ -129,6 +143,8 @@ paths:
       responses:
         '200':
           description: History
+      operationId: getUserByIdHistory
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:

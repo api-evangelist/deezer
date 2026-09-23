@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Deezer Public Album Chart API
+  title: Deezer Public Chart API
   description: Public REST API for the Deezer music streaming service. Catalog endpoints (tracks, albums, artists, playlists, charts, genres, radios, editorial, search) are available unauthenticated; user-scoped endpoints require an OAuth 2.0 access token issued via the Deezer Connect flow.
   version: 1.0.0
 servers:
@@ -18,6 +18,8 @@ paths:
       responses:
         '200':
           description: Chart object
+      operationId: getChart
+      x-operation-id-source: derived
   /chart/{genre_id}:
     get:
       tags:
@@ -32,6 +34,8 @@ paths:
       responses:
         '200':
           description: Genre chart
+      operationId: getChartByGenreId
+      x-operation-id-source: derived
   /chart/{genre_id}/tracks:
     get:
       tags:
@@ -46,6 +50,8 @@ paths:
       responses:
         '200':
           description: Tracks
+      operationId: getChartByGenreIdTracks
+      x-operation-id-source: derived
   /chart/{genre_id}/albums:
     get:
       tags:
@@ -60,6 +66,8 @@ paths:
       responses:
         '200':
           description: Albums
+      operationId: getChartByGenreIdAlbums
+      x-operation-id-source: derived
   /chart/{genre_id}/artists:
     get:
       tags:
@@ -74,6 +82,8 @@ paths:
       responses:
         '200':
           description: Artists
+      operationId: getChartByGenreIdArtists
+      x-operation-id-source: derived
 components:
   securitySchemes:
     oauth2:
