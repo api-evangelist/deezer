@@ -72,8 +72,6 @@ apis:
     url: https://developers.deezer.com/api/oauth
   - type: SDKs
     url: https://developers.deezer.com/sdk
-  - url: graphql/deezer-graphql.md
-    type: GraphQL
 - aid: deezer:deezer-album-api
   name: Deezer Album API
   description: The Album API from Deezer — 2 operation(s) for album.
